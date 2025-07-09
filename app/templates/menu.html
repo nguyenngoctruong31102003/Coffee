@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon/coffee-cup.png') }}">
+    <!-- theme-color -->
+    <meta name="theme-color" content="#6f4c3e">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main_css.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <title>Coffee Menu | Jerry</title>
+</head>
+<body>
+    <!-- Start Header -->
+    <header>
+        <a href="{{ url_for('index.index_page') }}" class="logo"> <!-- url_for('blueprint.function_name') -->
+            <img src="{{ url_for('static', filename='images/Logo/logo.png') }}" alt="Logo Coffee">
+
+        </a>
+        <ul class="nav-list">
+            <li><a href="{{ url_for('index.index_page') }}">Trang chủ</a></li>
+            <li><a href="#">Giới thiệu</a></li>
+            <li><a href="{{ url_for('menu.menu_page') }}">Thực đơn</a></li>
+            <li><a href="#">Liên hệ</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="#" class="nav-btn">
+                <i class="bx bx-cart"></i>
+                Giỏ hàng
+            </a>
+            <span class="xo">|</span>
+            <a href="#" class="nav-btn active">
+                <i class="bx bx-user-circle"></i>
+                Đăng nhập/Đăng ký
+            </a>
+            <!-- <div id="user-info"></div>
+                <a >
+                    <button onclick="logoutFromFacebook()"><i class='bx bx-log-out'></i></button>
+                </a> -->
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+    <!-- End Header -->
+
+    <!-- Start Menu -->
+    <main>
+        <section class="menu">
+            <!-- Title -->
+            <div class="title-welcome">
+                <div class="title">
+                    <h1>Thực đơn</h1>
+                </div>
+            </div>
+
+            <!-- Menu -->
+            <div class="menu-list">
+                <div class="menu-items">
+                    <!-- Ảnh sản phẩm -->
+                    <div class="img-container">
+                        <img src="{{ url_for('static', filename='images/menu_items/sting-lon.jpg') }}" alt="Sting Lon">
+                        <div class="box-btns">
+                            <a href="#!" class="box__btn">
+                                Xem chi tiết
+                            </a>
+                            <a href="#!" class="box__btn">
+                                Thêm vào giỏ hàng
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Tên sản phẩm -->
+                    <h2 class="product-name">Sting Lon</h2>
+                    <!-- Giá sản phẩm -->
+                    <p class="cost">15.000đ</p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+    <!-- End Menu -->
+
+    <!-- Footer -->
+    <!-- <footer>
+        <div>
+            <p>&copy; 2025 Jerry Coffee. All rights reserved.</p>
+        </div>
+    </footer> -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
