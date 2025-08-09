@@ -4,6 +4,6 @@ window.addEventListener("DOMContentLoaded", function () {
     popup.style.display = "block";
     setTimeout(function () {
       popup.style.display = "none";
-    }, 1500);
+    }, 2000);
   }
 });
