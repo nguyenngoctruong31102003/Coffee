@@ -12,7 +12,7 @@
     --text-color: #fff;
     --main-color: #ae8957;
     --big-font: 3.6rem;
-    --p-font: 2rem;
+    --p-font: 1.5rem;
 }
 
 body{
@@ -655,6 +655,65 @@ button:focus {
 .social-icon:focus {
     box-shadow: 0px 0px 0px 2px currentColor;
     transform: scale(0.9);
+}
+
+.return-page {
+    text-align: center; 
+    margin-top: 10px;
+}
+.return-page a{
+    text-decoration: none;
+    font-size: 16px; 
+    color: white;  
+}
+
+/* Error message */
+.error-message {
+    color: white;
+    font-size: 13px;
+}
+
+/* Logout Button */
+.logout-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 12px;
+    margin-left: 8px;
+    background: transparent;
+    color: #fff !important;
+    border-radius: 8px;
+    font-size: 1.3rem;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(229,57,53,0.08);
+}
+.logout-btn i {
+    margin: 0;
+    font-size: 1em;
+}
+/* Popup message styles */
+.popup-message {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    min-width: 220px;
+    padding: 16px 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 9999;
+    font-weight: bold;
+    background: #fff;
+    font-size: 16px;
+    transition: opacity 0.3s;
+}
+.popup-message.success {
+    color: #219653;
+}
+.popup-message.error {
+    color: #e53935;
 }
 /* End Form Login and Register Page */
 

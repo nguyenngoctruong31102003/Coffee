@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +11,30 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main_css.css') }}">
     <!-- Google fonts link -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <title>Coffee Shop</title>
 </head>
+
 <body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% set is_error = false %}
+    {% for message in messages %}
+    {% if 'thất bại' in message.lower() or 'lỗi' in message.lower() %}
+    {% set is_error = true %}
+    {% endif %}
+    {% endfor %}
+    <div id="popup-message" class="popup-message {{ 'error' if is_error else 'success' }}" style="display:none;">
+        {% for message in messages %}
+        {{ message }}<br>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
     <!-- Start Loading -->
     <div class="loader">
         <div class="truckWrapper">
@@ -33,7 +53,8 @@
                     </rect>
                     <rect stroke-width="2" stroke="#282828" fill="#282828" rx="1" height="11" width="4" y="81" x="193">
                     </rect>
-                    <rect stroke-width="3" stroke="#282828" fill="#DFDFDF" rx="2.5" height="90" width="121" y="1.5" x="6.5">
+                    <rect stroke-width="3" stroke="#282828" fill="#DFDFDF" rx="2.5" height="90" width="121" y="1.5"
+                        x="6.5">
                     </rect>
                     <rect stroke-width="2" stroke="#282828" fill="#DFDFDF" rx="2" height="4" width="6" y="84" x="1">
                     </rect>
@@ -50,7 +71,7 @@
                 </svg>
             </div>
             <div class="road"></div>
-    
+
             <svg xml:space="preserve" viewBox="0 0 453.459 453.459" xmlns:xlink="http://www.w3.org/1999/xlink"
                 xmlns="http://www.w3.org/2000/svg" id="Capa_1" version="1.1" fill="#000000" class="lampPost">
                 <path d="M252.882,0c-37.781,0-68.686,29.953-70.245,67.358h-6.917v8.954c-26.109,2.163-45.463,10.011-45.463,19.366h9.993
@@ -69,7 +90,7 @@
 
     <!-- Start Header -->
     <header>
-        <a href="{{ url_for('index.index_page') }}" class="logo">   <!-- url_for('blueprint.function_name') -->
+        <a href="{{ url_for('index.index_page') }}" class="logo"> <!-- url_for('blueprint.function_name') -->
             <img src="{{ url_for('static', filename='images/Logo/logo.png') }}" alt="Logo Coffee">
         </a>
         <ul class="nav-list">
@@ -84,14 +105,20 @@
                 Giỏ hàng
             </a>
             <span class="xo">|</span>
-            <a href="#" class="nav-btn active">
+            {% if session.get('ten_khachhang') %}
+            <span class="nav-btn user-name">
+                <i class="bx bx-user-circle"></i>
+                {{ session['ten_khachhang'] }}
+            </span>
+            <a href="{{ url_for('login.logout') }}" class="nav-btn logout-btn" title="Đăng xuất">
+                <i class="fas fa-sign-out-alt"></i>
+            </a>
+            {% else %}
+            <a href="{{ url_for('login.login_page') }}" class="nav-btn active">
                 <i class="bx bx-user-circle"></i>
                 Đăng nhập/Đăng ký
             </a>
-            <!-- <div id="user-info"></div>
-            <a >
-                <button onclick="logoutFromFacebook()"><i class='bx bx-log-out'></i></button>
-            </a> -->
+            {% endif %}
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>
     </header>
@@ -108,7 +135,7 @@
                 Mùi thơm sữa béo ngọt ngào, quyến rũ. Hương vị đặc trưng hòa quyện với cà phê.
                 <br>Ngoài ra, Cream đặc có đường Brothers còn bổ sung thêm Vitamin B1, B6 rất tốt cho sức khỏe.
             </p>
-    
+
             <div class="main-hero" data-aos="flip-down" data-aos-duration="1400" data-aos-delay="400">
                 <a href="#" class="btn">Oder Now</a>
                 <h3 href="#" class="price">
@@ -120,25 +147,26 @@
             <img src="{{ url_for('static', filename='images/hero.png') }}" alt="Introduce">
         </div>
     </section>
-    
+
     <!-- Contact Social Media -->
     <div class="icons">
         <a href="https://github.com/nguyenngoctruong31102003" data-aos="fade-in" data-aos-duration="1400"
             data-aos-delay="600">
             <i class="ri-github-fill"></i></a>
-        <a href="https://www.facebook.com/NNTruong.2k3/" data-aos="fade-in" data-aos-duration="1400" data-aos-delay="700">
+        <a href="https://www.facebook.com/NNTruong.2k3/" data-aos="fade-in" data-aos-duration="1400"
+            data-aos-delay="700">
             <i class="ri-facebook-fill"></i></a>
         <a href="https://www.youtube.com/@ngoctruongnguyen5786" data-aos="fade-in" data-aos-duration="1400"
             data-aos-delay="800">
             <i class="ri-youtube-fill"></i></a>
     </div>
-    
+
     <!-- =========================== -->
     <!--Body -->
     <div class="">
-    
+
     </div>
-    
+
     <!-- scroll -->
     <div class="scroll-down" data-aos="zoom-out-down" data-aos-duration="1400" data-aos-delay="550">
         <a href="#">
@@ -146,16 +174,27 @@
             Scroll Down
         </a>
     </div>
-    
+
     <!-- Footer -->
     <footer>
         <div>
             <p>&copy; 2025 Jerry Coffee. All rights reserved.</p>
         </div>
     </footer>
-    
+
     <!-- JavaScrip Link -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+            var popup = document.getElementById("popup-message");
+            if (popup) {
+                popup.style.display = "block";
+                setTimeout(function () {
+                    popup.style.display = "none";
+                }, 1500);
+            }
+        });
+    </script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({
@@ -164,4 +203,5 @@
 
     </script>
 </body>
+
 </html>

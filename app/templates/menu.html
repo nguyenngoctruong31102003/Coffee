@@ -13,7 +13,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
-
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <title>Coffee Menu | Jerry</title>
 </head>
 
@@ -36,14 +37,20 @@
                 Giỏ hàng
             </a>
             <span class="xo">|</span>
-            <a href="#" class="nav-btn active">
+            {% if session.get('ten_khachhang') %}
+            <span class="nav-btn user-name">
+                <i class="bx bx-user-circle"></i>
+                {{ session['ten_khachhang'] }}
+            </span>
+            <a href="{{ url_for('login.logout') }}" class="nav-btn logout-btn" title="Đăng xuất">
+                <i class="fas fa-sign-out-alt"></i>
+            </a>
+            {% else %}
+            <a href="{{ url_for('login.login_page') }}" class="nav-btn active">
                 <i class="bx bx-user-circle"></i>
                 Đăng nhập/Đăng ký
             </a>
-            <!-- <div id="user-info"></div>
-                <a >
-                    <button onclick="logoutFromFacebook()"><i class='bx bx-log-out'></i></button>
-                </a> -->
+            {% endif %}
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>
     </header>
@@ -77,7 +84,8 @@
             <div class="menu-items">
                 <!-- Ảnh sản phẩm -->
                 <div class="img-container">
-                    <img src="{{ url_for('static', filename='images/menu_items/nuoc-suoi-aqua.jpg') }}" alt="Nước Suối Aqua">
+                    <img src="{{ url_for('static', filename='images/menu_items/nuoc-suoi-aqua.jpg') }}"
+                        alt="Nước Suối Aqua">
                     <div class="box-btns">
                         <a href="#!" class="box__btn">
                             Xem chi tiết
@@ -161,7 +169,8 @@
             <div class="menu-items">
                 <!-- Ảnh sản phẩm -->
                 <div class="img-container">
-                    <img src="{{ url_for('static', filename='images/menu_items/pana-cotta-dau.jpg') }}" alt="Panna Cotta Dâu">
+                    <img src="{{ url_for('static', filename='images/menu_items/pana-cotta-dau.jpg') }}"
+                        alt="Panna Cotta Dâu">
                     <div class="box-btns">
                         <a href="#!" class="box__btn">
                             Xem chi tiết

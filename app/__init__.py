@@ -5,6 +5,7 @@ from sqlalchemy import text
 
 def create_app():
     app = Flask(__name__)
+    app.config['SECRET_KEY'] = 'd128d9de48a6e6e107705682b2d9c80e9ef625eccc9af7d388c4c4965b91dcd3'
     
     # Cấu hình chuỗi kết nối SQL Server
     app.config['SQLALCHEMY_DATABASE_URI'] = (
